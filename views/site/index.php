@@ -1,10 +1,10 @@
 <?php
 
-use app\models\Article;
+use app\models\User;
 use yii\bootstrap5\Html;
 
 /** @var yii\web\View $this */
-/** @var Article $articles */
+/** @var User $user */
 
 $this->title = 'My Yii Application';
 ?>
@@ -12,15 +12,13 @@ $this->title = 'My Yii Application';
     <div class="body-content">
 
         <div class="row">
-            <?php foreach ($articles as $article): ?>
+            <?php foreach ($user->articles as $article): ?>
                 <div class="col-lg-4 mb-3">
                     <h2><?= $article->header ?></h2>
 
                     <p><?= $article->article ?></p>
 
-                    <p>Автор: <?= $article->user->name . " " . $article->user->birthDay ?></p>
-
-                    <?php if ($article->user->id === Yii::$app->user->id): ?>
+                    <p>Автор: <?= $user->name . " " . $user->birthDay ?></p>
                         <table>
                             <tr>
                                 <td>
@@ -36,7 +34,6 @@ $this->title = 'My Yii Application';
                                 </td>
                             </tr>
                         </table>
-                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         </div>

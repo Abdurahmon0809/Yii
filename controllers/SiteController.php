@@ -69,8 +69,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $articles = Article::find()->all();
-        return $this->render('index', compact('articles'));
+        $user = User::findOne(Yii::$app->user->id);
+        return $this->render('index', compact('user'));
     }
 
     public function actionRegister()

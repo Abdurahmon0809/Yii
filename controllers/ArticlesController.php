@@ -36,7 +36,10 @@ class ArticlesController extends Controller
 
     public function actionDelete($id)
     {
-        Article::findOne($id)->delete();
+        if (!Yii::$app->user->isGuest) {
+            Article::findOne($id)->delete();
+            return $this->goHome();
+        }
         return $this->goHome();
     }
 }
